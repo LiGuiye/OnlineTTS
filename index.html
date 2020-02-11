@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>百度语音合成</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- 百度语音合成接口 -->
+		<script type="text/javascript" src="js/baidu_tts_cors.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<style>
+			audio{
+				float: left;
+				margin-top: 0px;
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+			.btn-group{
+				margin-top:3px;
+			}
+			body{
+				margin-left: 5%;
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="text-center">百度语音合成API免费接口</h1>
+		<h4 class="text-center">仅供个人学习使用，请勿滥用</h4>
+		<p class="text-center">当次合成关闭后才可进行下次合成。如需下载，请在合成后的audio控件上点击右键另存。</p>
+		<form role="form">
+			<div class="form-group">
+				<label for="name">请输入语速，取值0-15，默认为5中语速</label>
+				<input type="text" id='spd' class="form-control" placeholder="请输入语速" value='5' oninput="value=value.replace(/[^\d]/g,'')" />
+			</div>
+			<div class="form-group">
+				<label for="name">请输入音调，取值0-15，默认为5中语调</label>
+				<input type="text" id='pit' class="form-control" placeholder="请输入音调" value='5' oninput="value=value.replace(/[^\d]/g,'')" />
+			</div>
+			<div class="form-group">
+				<label for="name">请输入发音人序号。（基础音库）度小宇=1，度小美=0，度逍遥=3，度丫丫=4（精品音库）度博文=106，度小童=110，度小萌=111，度米朵=103，度小娇=5</label>
+				<input type="text" id='per' class="form-control" placeholder="请输入发音人序号" value='4' oninput="value=value.replace(/[^\d]/g,'')" />
+			</div>
+			<div class="form-group">
+				<label for="name">请输入待合成文本(2048字以内)</label>
+				<textarea id='text' class="form-control" rows="3" placeholder="请输入待合成文本(<=2048字)" value='百度语音合成' maxlength="2048"></textarea>
+			</div>
+		</form>
+		<div id="form"></div>
+		<div class="btn-group">
+			<button class="btn btn-default" onclick='tts()' id='ttsBtn'>合成</button>
+			<button class="btn btn-default" onclick='play()' id='playBtn' style="display: none;"></button>
+			<button class="btn btn-default" onclick='pause()' id='pauseBtn' style="display: none;">暂停</button>
+			<button class="btn btn-default" onclick='cancel()' id='cancelBtn' style="display: none;">关闭</button>
+		</div>
+	</body>
+</html>
