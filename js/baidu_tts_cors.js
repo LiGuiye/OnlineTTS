@@ -80,10 +80,7 @@ function btts(param, options) {
             clearTimeout(timer);
             if (xhr.status == 200) {
                 if (xhr.response.type === 'audio/mp3') {
-
                     // 在body元素下apppend音频控件
-					// document.getElementsByClassName(form)
-					// document.getElementById("audio").appendChild(audio);
                     document.body.appendChild(audio);
                     audio.setAttribute('src', URL.createObjectURL(xhr.response));
 
@@ -91,7 +88,6 @@ function btts(param, options) {
                     if (opt.autoDestory) {
                         audio.onended = function() {
                             document.body.removeChild(audio);
-							// document.getElementById("form").removeChild(audio);
                         }
                     }
                     isFunction(opt.onSuccess) && opt.onSuccess(audio);
